@@ -1,13 +1,14 @@
 package tests;
 
+import models.Account;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertTrue;
 
-public class AccountTest extends BaseWithLoginTest {
+public class AccountTest extends BaseTest {
 
     @Test
-    public void account() {
+    public void accountShouldBeCreated() {
         //ЛОГИН
         //ОТКРЫТЬ СТРАНИЦУ АККАУНТОВ
         //НАЖАТЬ NEW
@@ -15,28 +16,25 @@ public class AccountTest extends BaseWithLoginTest {
         //SAVE
         //ПРОВЕРИТЬ ЛИСТ
 
-        String accountName = "Nastya";
-        accountListPage.open();
-        assertTrue(accountListPage.isPageOpened(), "Страница аккаунтов не открылась");
-        accountListPage.clickNewButton();
-        accountListPage.setTextForInput("Account Name", accountName);
-        accountListPage.setTextForInput("Website", "Nastya");
-        accountListPage.setTextForInput("Phone", "Nastya");
-        accountListPage.setTextForInput("Employees", "Nastya");
-        accountListPage.setTextForInput("Billing City", "Nastya");
-        accountListPage.setTextForInput("Billing Zip/Postal Code", "Nastya");
-        accountListPage.setTextForInput("Billing State/Province", "Nastya");
-        accountListPage.setTextForInput("Billing Country", "Nastya");
-        accountListPage.setTextForInput("Shipping City", "Nastya");
-        accountListPage.setTextForInput("Shipping Zip/Postal Code", "Nastya");
-        accountListPage.setTextForInput("Shipping State/Province", "Nastya");
-        accountListPage.setTextForInput("Shipping Country", "Nastya");
-        accountListPage.selectItem("Type", "Press");
-        accountListPage.selectItem("Industry", "Education");
-        accountListPage.textArea("Description", "Nastya");
-        accountListPage.textArea("Billing Street", "Nastya");
-        accountListPage.textArea("Shipping Street", "Nastya");
-        accountListPage.clickSaveButton();
-        assertTrue(accountListPage.isAccountAdded(accountName), "Aккаунт не создался");
+        boolean isOpened = loginPage
+                .open()
+                .isPageOpened();
+        assertTrue(isOpened, "Страница логина не открылась");
+        isOpened = loginPage
+                .login("nastya.martsuta-gugr@force.com", "password97")
+                .isPageOpened();
+        assertTrue(isOpened, "Home Page не открылась");
+
+        Account account = new Account("Test", "no", "tut.by", "",
+                "Minsk", "220107", "Minsk", "Belarus",
+                "Zelva", "213940", "Zelva", "Belarus",
+                "Delivery only on weekdays", "Narodnaya", "Pobedu");
+
+        accountListPage
+                .open()
+                .clickNew()
+                .create(account)
+                .openDetailsTab()
+                .validateAccount(account);
     }
 }
