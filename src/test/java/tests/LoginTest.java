@@ -17,7 +17,7 @@ public class LoginTest extends BaseTest {
                 .isPageOpened();
         assertTrue(isOpened, "Страница Home Page не открылась");
 
-//        loginPage.open();
+        //        loginPage.open();
 //        assertTrue(loginPage.isPageOpened(), "Страница логина не открылась");
 //        loginPage.login("nastya.martsuta-gugr@force.com", "password97" );
 //        assertTrue(homePage.isPageOpened(), "Страница Home Page не открылась");

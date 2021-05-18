@@ -24,6 +24,7 @@ public class BaseTest {
         options.addArguments("--disable-notifications");
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS); //НЕЯВНЫЕ ОЖИДАНИЯ
+        driver.manage().window().maximize();
         loginPage = new LoginPage(driver);
         accountListPage = new AccountListPage(driver);
     }
