@@ -12,7 +12,7 @@ public class BaseWithLoginTest extends BaseTest {
         super.setUp();
         loginPage.open();
         assertTrue(loginPage.isPageOpened(), "Страница логина не открылась");
-        HomePage homePage = loginPage.login("nastya.martsuta-gugr@force.com", "password97" );
+        HomePage homePage = loginPage.login("nastya.martsuta-gugr@force.com", "password97");
         assertTrue(homePage.isPageOpened(), "Страница Home Page не открылась");
     }
 }

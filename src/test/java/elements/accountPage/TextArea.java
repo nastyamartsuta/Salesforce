@@ -1,4 +1,4 @@
-package elements;
+package elements.accountPage;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -16,6 +16,7 @@ public class TextArea {
 
     public void write(String text) {
         System.out.println(String.format("Writing text '%s' into input with label %s", text, label));
+        //JS set style
         driver.findElement(By.xpath(String.format(textAreaLocator, label))).sendKeys(text);
     }
 }

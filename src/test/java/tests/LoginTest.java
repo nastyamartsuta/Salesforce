@@ -13,7 +13,7 @@ public class LoginTest extends BaseTest {
                 .isPageOpened();
         assertTrue(isOpened, "Страница логина не открылась");
         isOpened = loginPage
-                .login("nastya.martsuta-gugr@force.com", "password97" )
+                .login("nastya.martsuta-gugr@force.com", "password97")
                 .isPageOpened();
         assertTrue(isOpened, "Страница Home Page не открылась");
 

@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertTrue;
 
-public class AccountTest extends BaseTest {
+public class AccountTest extends BaseWithLoginTest {
 
     @Test
     public void accountShouldBeCreated() {
@@ -16,19 +16,10 @@ public class AccountTest extends BaseTest {
         //SAVE
         //ПРОВЕРИТЬ ЛИСТ
 
-        boolean isOpened = loginPage
-                .open()
-                .isPageOpened();
-        assertTrue(isOpened, "Страница логина не открылась");
-        isOpened = loginPage
-                .login("nastya.martsuta-gugr@force.com", "password97")
-                .isPageOpened();
-        assertTrue(isOpened, "Home Page не открылась");
-
-        Account account = new Account("Test", "no", "tut.by", "",
+        Account account = new Account("Nastya", "375336346622", "tut.by", "",
                 "Minsk", "220107", "Minsk", "Belarus",
-                "Zelva", "213940", "Zelva", "Belarus",
-                "Delivery only on weekdays", "Narodnaya", "Pobedu");
+                "Zelva", "231940", "Zelva", "Belarus",
+                "Analyst", "Banking", "Delivery only on weekdays", "Narodnaya", "Pobedu");
 
         accountListPage
                 .open()
